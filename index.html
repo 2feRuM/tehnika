@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Помощь с техникой</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
+<style>
+:root{
+  --bg:#eef4f4;--ink:#11232b;--muted:#4b6169;--line:#c5d5d7;
+  --brand:#0f6b63;--on-brand:#ffffff;--accent:#f2b134;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1a1f;--ink:#e6f0f1;--muted:#9fb5ba;--line:#28414a;
+    --brand:#4fd1c0;--on-brand:#072723;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1a1f;--ink:#e6f0f1;--muted:#9fb5ba;--line:#28414a;
+  --brand:#4fd1c0;--on-brand:#072723;color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:1.0625rem;line-height:1.6}
+.wrap{max-width:60rem;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.25rem 0}
+.brand{font-weight:800;font-size:1.05rem;display:flex;align-items:center;gap:.6rem}
+.brand::before{content:"";width:.9rem;height:.9rem;border-radius:50%;background:var(--accent)}
+.lang{display:flex;border:1.5px solid var(--line);border-radius:999px;padding:.2rem}
+.lang button{font:inherit;font-weight:600;font-size:.9rem;color:var(--muted);background:none;border:0;
+  padding:.4rem .85rem;border-radius:999px;cursor:pointer;min-height:2.5rem}
+.lang button[aria-pressed="true"]{background:var(--brand);color:var(--on-brand)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hero{padding:3rem 0 3.5rem}
+h1{font-size:clamp(2.1rem,6.5vw,4rem);line-height:1.08;font-weight:800;letter-spacing:-.02em;margin:0 0 1.25rem;max-width:18ch}
+.lead{font-size:1.2rem;color:var(--muted);max-width:36rem;margin:0 0 2rem}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-block;font-weight:600;text-decoration:none;padding:.9rem 1.5rem;border-radius:.6rem;
+  border:2px solid var(--brand);min-height:3rem}
+.btn.p{background:var(--brand);color:var(--on-brand)}
+.btn.s{color:var(--ink);border-color:var(--line)}
+section{display:grid;grid-template-columns:1fr;gap:1rem;padding:2.5rem 0;border-top:1.5px solid var(--line)}
+h2{font-size:1.5rem;margin:0;font-weight:800}
+.list{margin:0;padding:0;list-style:none}
+.list li{padding:.9rem 0;border-top:1px solid var(--line)}
+.list li:first-child{border-top:0;padding-top:0}
+.list strong{display:block;font-size:1.1rem}
+.list span{color:var(--muted)}
+.price{font-size:2.2rem;font-weight:800;margin:0 0 .25rem}
+.note{color:var(--muted);margin:0}
+ol.list{counter-reset:s}
+ol.list li{counter-increment:s;padding-left:2.5rem;position:relative}
+ol.list li::before{content:counter(s);position:absolute;left:0;top:.9rem;width:1.7rem;height:1.7rem;
+  border-radius:50%;background:var(--accent);color:#11232b;font-weight:800;font-size:.9rem;
+  display:grid;place-items:center}
+ol.list li:first-child::before{top:0}
+footer{padding:2rem 0 3rem;border-top:1.5px solid var(--line);color:var(--muted)}
+@media (min-width:48rem){
+  section{grid-template-columns:14rem 1fr;gap:2rem}
+  .hero{padding:5rem 0 5.5rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand" data-i="brand">Помощь с техникой</div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-l="ru">RU</button>
+      <button type="button" data-l="lv">LV</button>
+      <button type="button" data-l="en">EN</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1 data-i="h1"></h1>
+      <p class="lead" data-i="lead"></p>
+      <div class="btns">
+        <a class="btn p" id="tg" data-i="tg"></a>
+        <a class="btn s" id="mail" data-i="mail"></a>
+      </div>
+    </div>
+
+    <section>
+      <h2 data-i="h_services"></h2>
+      <ul class="list">
+        <li><strong data-i="s1t"></strong><span data-i="s1d"></span></li>
+        <li><strong data-i="s2t"></strong><span data-i="s2d"></span></li>
+        <li><strong data-i="s3t"></strong><span data-i="s3d"></span></li>
+        <li><strong data-i="s4t"></strong><span data-i="s4d"></span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 data-i="h_price"></h2>
+      <div>
+        <p class="price" data-i="price"></p>
+        <p class="note" data-i="price_note"></p>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-i="h_how"></h2>
+      <ol class="list">
+        <li data-i="st1"></li>
+        <li data-i="st2"></li>
+        <li data-i="st3"></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer data-i="langs"></footer>
+</div>
+
+<script>
+// Edit these two lines with your real contacts
+var TG = "https://t.me/danya_140";
+var MAIL = "mailto:danikmanojlenko1@gmail.com";
+
+var T = {
+ru:{brand:"Помощь с техникой",title:"Помощь с техникой",
+ h1:"Телефон, компьютер, аккаунты: разберёмся вместе",
+ lead:"Помогаю настроить технику, защитить аккаунты и не попасться на мошенников. Объясняю простыми словами и без спешки.",
+ tg:"Написать в Telegram",mail:"Написать на почту",
+ h_services:"Чем могу помочь",
+ s1t:"Телефон и компьютер",s1d:"Настройка, перенос фото и контактов, установка приложений, чистка от лишнего.",
+ s2t:"Защита аккаунтов",s2d:"Надёжные пароли, двухфакторная аутентификация, проверка, не утекли ли ваши данные.",
+ s3t:"Проверка подозрительного",s3d:"Письма, ссылки, сообщения и звонки «из банка»: скажу, мошенничество это или нет.",
+ s4t:"Помощь на расстоянии",s4d:"По видеозвонку или с удалённым доступом, если мы не рядом.",
+ h_price:"Цена",price:"от 10 € за час",price_note:"Точную цену назову заранее, до начала работы.",
+ h_how:"Как это проходит",
+ st1:"Напишите, что случилось.",st2:"Договоримся о времени и цене.",st3:"Решим проблему, и я объясню, что сделал.",
+ langs:"Работаю на русском, латышском и английском языках."},
+lv:{brand:"Tehnikas palīdzība",title:"Tehnikas palīdzība",
+ h1:"Telefons, dators, konti: sakārtosim kopā",
+ lead:"Palīdzu iestatīt tehniku, aizsargāt kontus un nenonākt krāpnieku lamatās. Paskaidroju vienkārši un bez steigas.",
+ tg:"Rakstīt Telegram",mail:"Rakstīt e-pastā",
+ h_services:"Ar ko varu palīdzēt",
+ s1t:"Telefons un dators",s1d:"Iestatīšana, fotogrāfiju un kontaktu pārnešana, lietotņu instalēšana, liekā dzēšana.",
+ s2t:"Kontu aizsardzība",s2d:"Drošas paroles, divfaktoru autentifikācija, pārbaude, vai jūsu dati nav nopludināti.",
+ s3t:"Aizdomīgu ziņu pārbaude",s3d:"E-pasti, saites, ziņas un zvani „no bankas”: pateikšu, vai tā ir krāpšana.",
+ s4t:"Palīdzība attālināti",s4d:"Ar video zvanu vai attālināto piekļuvi, ja neesam blakus.",
+ h_price:"Cena",price:"no 10 € stundā",price_note:"Precīzu cenu nosaukšu iepriekš, pirms darba sākuma.",
+ h_how:"Kā tas notiek",
+ st1:"Uzrakstiet, kas notika.",st2:"Vienosimies par laiku un cenu.",st3:"Atrisināsim problēmu, un es paskaidrošu, ko izdarīju.",
+ langs:"Strādāju latviešu, krievu un angļu valodā."},
+en:{brand:"Tech help",title:"Tech help",
+ h1:"Phone, computer, accounts: let’s sort it out together",
+ lead:"I help set up devices, secure accounts and avoid scams. I explain things in plain words, without rushing.",
+ tg:"Message on Telegram",mail:"Send an email",
+ h_services:"How I can help",
+ s1t:"Phone and computer",s1d:"Setup, moving photos and contacts, installing apps, removing clutter.",
+ s2t:"Account security",s2d:"Strong passwords, two-factor authentication, checking whether your data has leaked.",
+ s3t:"Suspicious message check",s3d:"Emails, links, texts and calls “from the bank”: I’ll tell you whether it’s a scam.",
+ s4t:"Remote help",s4d:"By video call or remote access when we’re not in the same place.",
+ h_price:"Price",price:"from €10 per hour",price_note:"I’ll name the exact price before I start.",
+ h_how:"How it works",
+ st1:"Tell me what happened.",st2:"We agree on a time and a price.",st3:"We fix the problem, and I explain what I did.",
+ langs:"I work in English, Russian and Latvian."}
+};
+
+function setLang(l){
+  var d=T[l]||T.ru;
+  document.documentElement.lang=l;
+  document.title=d.title;
+  document.querySelectorAll("[data-i]").forEach(function(el){el.textContent=d[el.getAttribute("data-i")]});
+  document.querySelectorAll(".lang button").forEach(function(b){
+    b.setAttribute("aria-pressed",b.getAttribute("data-l")===l?"true":"false");
+  });
+  try{localStorage.setItem("lang",l)}catch(e){}
+}
+document.getElementById("tg").href=TG;
+document.getElementById("tg").target="_blank";
+document.getElementById("tg").rel="noopener";
+document.getElementById("mail").href=MAIL;
+document.querySelectorAll(".lang button").forEach(function(b){
+  b.addEventListener("click",function(){setLang(b.getAttribute("data-l"))});
+});
+var saved=null;
+try{saved=localStorage.getItem("lang")}catch(e){}
+var nav=(navigator.language||"ru").slice(0,2).toLowerCase();
+setLang(T[saved]?saved:(T[nav]?nav:"ru"));
+</script>
+</body>
+</html>
